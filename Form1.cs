@@ -207,5 +207,86 @@ namespace Graphics1
             double amount = Convert.ToDouble(amountTextBox.Text);
             StartFilter(new ContrastFilter(1 / amount));
         }
+
+        private void NoiseDots_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartFilter(new NoiseDotsFilter());
+        }
+
+        private void NoiseLines_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartFilter(new NoiseLinesFilter());
+        }
+
+        private void NoiseCircles_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            double amount = Convert.ToDouble(amountTextBox.Text);
+            StartFilter(new NoiseCirclesFilter());
+        }
+
+        private void Mediane_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(amountTextBox.Text, out int radius))
+            {
+                MessageBox.Show("Введите целое число для размера апертуры!");
+                return;
+            }
+
+            if (radius <= 1)
+            {
+                MessageBox.Show("Размер апертуры должен быть больше 1!");
+                return;
+            }
+
+            if (radius % 2 == 0)
+            {
+                MessageBox.Show("Размер апертуры должен быть нечётным!");
+                return;
+            }
+
+            StartFilter(new MedianFilter(radius));
+        }
+
+        //Резкость
+        private void Sharpness_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(amountTextBox.Text, out int scale))
+            {
+                MessageBox.Show("Введите числовое значение для коэффициента масштабирования!");
+                return;
+            }
+
+            double scale2 = scale / 10;
+            StartFilter(new SharpnessFilter(scale2));
+        }
+
+        private void Box_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(amountTextBox.Text, out int radius))
+            {
+                MessageBox.Show("Введите целое число для размера апертуры!");
+                return;
+            }
+
+            if (radius <= 1)
+            {
+                MessageBox.Show("Размер апертуры должен быть больше 1!");
+                return;
+            }
+
+            if (radius % 2 == 0)
+            {
+                MessageBox.Show("Размер апертуры должен быть нечётным!");
+                return;
+            }
+
+            StartFilter(new BoxFilter(radius));
+        }
+
+        private void Contouring_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartFilter(new ContourFilter());
+        }
+
     }
 }

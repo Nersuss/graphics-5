@@ -43,6 +43,14 @@ namespace Graphics1
             decreaseBrightness_ЯркостьToolStripMenuItem = new ToolStripMenuItem();
             increase_contrast_ToolStripMenuItem = new ToolStripMenuItem();
             decrease_contrast_ToolStripMenuItem = new ToolStripMenuItem();
+            filters_lr6_ToolStripMenuItem = new ToolStripMenuItem();
+            NoiseDots_ToolStripMenuItem = new ToolStripMenuItem();
+            NoiseLines_ToolStripMenuItem = new ToolStripMenuItem();
+            NoiseCircles_ToolStripMenuItem = new ToolStripMenuItem();
+            Box_ToolStripMenuItem = new ToolStripMenuItem();
+            Mediane_ToolStripMenuItem = new ToolStripMenuItem();
+            Sharpness_ToolStripMenuItem = new ToolStripMenuItem();
+            Contouring_ToolStripMenuItem = new ToolStripMenuItem();
             openFileDialog1 = new OpenFileDialog();
             pictureBox1 = new PictureBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -61,7 +69,7 @@ namespace Graphics1
             // 
             menuStrip1.BackColor = SystemColors.ActiveCaption;
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { file_ToolStripMenuItem, filters_lr5_ToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { file_ToolStripMenuItem, filters_lr5_ToolStripMenuItem, filters_lr6_ToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
@@ -96,8 +104,8 @@ namespace Graphics1
             // 
             filters_lr5_ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { invert_ToolStripMenuItem, grayScale_ToolStripMenuItem, binarization_ToolStripMenuItem, increaseBrightness_ЯркостьToolStripMenuItem, decreaseBrightness_ЯркостьToolStripMenuItem, increase_contrast_ToolStripMenuItem, decrease_contrast_ToolStripMenuItem });
             filters_lr5_ToolStripMenuItem.Name = "filters_lr5_ToolStripMenuItem";
-            filters_lr5_ToolStripMenuItem.Size = new Size(69, 20);
-            filters_lr5_ToolStripMenuItem.Text = "Фильтры";
+            filters_lr5_ToolStripMenuItem.Size = new Size(96, 20);
+            filters_lr5_ToolStripMenuItem.Text = "Фильтры ЛР 5";
             // 
             // invert_ToolStripMenuItem
             // 
@@ -147,6 +155,62 @@ namespace Graphics1
             decrease_contrast_ToolStripMenuItem.Size = new Size(212, 22);
             decrease_contrast_ToolStripMenuItem.Text = "Понизить контрастность";
             decrease_contrast_ToolStripMenuItem.Click += DecreaseContrast_ToolStripMenuItem_Click;
+            // 
+            // filters_lr6_ToolStripMenuItem
+            // 
+            filters_lr6_ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { NoiseDots_ToolStripMenuItem, NoiseLines_ToolStripMenuItem, NoiseCircles_ToolStripMenuItem, Box_ToolStripMenuItem, Mediane_ToolStripMenuItem, Sharpness_ToolStripMenuItem, Contouring_ToolStripMenuItem });
+            filters_lr6_ToolStripMenuItem.Name = "filters_lr6_ToolStripMenuItem";
+            filters_lr6_ToolStripMenuItem.Size = new Size(96, 20);
+            filters_lr6_ToolStripMenuItem.Text = "Фильтры ЛР 6";
+            // 
+            // NoiseDots_ToolStripMenuItem
+            // 
+            NoiseDots_ToolStripMenuItem.Name = "NoiseDots_ToolStripMenuItem";
+            NoiseDots_ToolStripMenuItem.Size = new Size(250, 22);
+            NoiseDots_ToolStripMenuItem.Text = "Шум точки";
+            NoiseDots_ToolStripMenuItem.Click += NoiseDots_ToolStripMenuItem_Click;
+            // 
+            // NoiseLines_ToolStripMenuItem
+            // 
+            NoiseLines_ToolStripMenuItem.Name = "NoiseLines_ToolStripMenuItem";
+            NoiseLines_ToolStripMenuItem.Size = new Size(250, 22);
+            NoiseLines_ToolStripMenuItem.Text = "Шум линии";
+            NoiseLines_ToolStripMenuItem.Click += NoiseLines_ToolStripMenuItem_Click;
+            // 
+            // NoiseCircles_ToolStripMenuItem
+            // 
+            NoiseCircles_ToolStripMenuItem.Name = "NoiseCircles_ToolStripMenuItem";
+            NoiseCircles_ToolStripMenuItem.Size = new Size(250, 22);
+            NoiseCircles_ToolStripMenuItem.Text = "Шум окружности";
+            NoiseCircles_ToolStripMenuItem.Click += NoiseCircles_ToolStripMenuItem_Click;
+            // 
+            // Box_ToolStripMenuItem
+            // 
+            Box_ToolStripMenuItem.Name = "Box_ToolStripMenuItem";
+            Box_ToolStripMenuItem.Size = new Size(250, 22);
+            Box_ToolStripMenuItem.Text = "Равномерное шумоподавление";
+            Box_ToolStripMenuItem.Click += Box_ToolStripMenuItem_Click;
+            // 
+            // Mediane_ToolStripMenuItem
+            // 
+            Mediane_ToolStripMenuItem.Name = "Mediane_ToolStripMenuItem";
+            Mediane_ToolStripMenuItem.Size = new Size(250, 22);
+            Mediane_ToolStripMenuItem.Text = "Медианное шумоподавление";
+            Mediane_ToolStripMenuItem.Click += Mediane_ToolStripMenuItem_Click;
+            // 
+            // Sharpness_ToolStripMenuItem
+            // 
+            Sharpness_ToolStripMenuItem.Name = "Sharpness_ToolStripMenuItem";
+            Sharpness_ToolStripMenuItem.Size = new Size(250, 22);
+            Sharpness_ToolStripMenuItem.Text = "Повышение резкости";
+            Sharpness_ToolStripMenuItem.Click += Sharpness_ToolStripMenuItem_Click;
+            // 
+            // Contouring_ToolStripMenuItem
+            // 
+            Contouring_ToolStripMenuItem.Name = "Contouring_ToolStripMenuItem";
+            Contouring_ToolStripMenuItem.Size = new Size(250, 22);
+            Contouring_ToolStripMenuItem.Text = "Оконтуривание";
+            Contouring_ToolStripMenuItem.Click += Contouring_ToolStripMenuItem_Click;
             // 
             // openFileDialog1
             // 
@@ -240,7 +304,7 @@ namespace Graphics1
             MinimumSize = new Size(527, 471);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Лаба №5";
+            Text = "Лаба №5-6";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -273,6 +337,14 @@ namespace Graphics1
         private Label Label1;
         private TextBox amountTextBox;
         private PictureBox pictureBox2;
+        private ToolStripMenuItem filters_lr6_ToolStripMenuItem;
+        private ToolStripMenuItem NoiseDots_ToolStripMenuItem;
+        private ToolStripMenuItem NoiseLines_ToolStripMenuItem;
+        private ToolStripMenuItem NoiseCircles_ToolStripMenuItem;
+        private ToolStripMenuItem Box_ToolStripMenuItem;
+        private ToolStripMenuItem Mediane_ToolStripMenuItem;
+        private ToolStripMenuItem Sharpness_ToolStripMenuItem;
+        private ToolStripMenuItem Contouring_ToolStripMenuItem;
     }
 }
 
